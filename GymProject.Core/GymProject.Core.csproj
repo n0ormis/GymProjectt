@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>ThePower.Core</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MailKit" Version="4.3.0" />
+      <PackageReference Include="MediatR" Version="12.1.1" />
+      <PackageReference Include="MimeKit" Version="4.3.0" />
+      <PackageReference Include="Stripe.net" Version="43.4.0-beta.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\GymProject.Contract\GymProject.Contract.csproj" />
+      <ProjectReference Include="..\GymProject.Domain\GymProject.Domain.csproj" />
+      <ProjectReference Include="..\GymProject.Infastructure\GymProject.Infastructure.csproj" />
+    </ItemGroup>
+
+</Project>

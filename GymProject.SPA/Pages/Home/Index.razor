@@ -1,0 +1,13 @@
+﻿@page "/"
+@using ThePowerSPAv2.Defenisions
+
+@inject NavigationManager NavigationManager
+
+@code{
+
+    protected override async Task OnInitializedAsync()
+    {
+        NavigationManager.NavigateTo(PageUri.ABOUT_US);
+    }
+
+}

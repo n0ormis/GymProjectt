@@ -1,0 +1,38 @@
+@page "/sign-in"
+@using ThePowerSPAv2.ViewModels.Identity
+@layout EmptyLayout
+
+@inject IdentityViewModel ViewModel
+
+ <section class="form-wrapper">
+        <h2>Sign In</h2>
+        <EditForm Model="ViewModel.SignInModel" OnValidSubmit="ViewModel.SignInAsync">
+            <div class="form-control">
+                <InputText @bind-Value="ViewModel.SignInModel.Email" type="text" required />
+                <label>Email or phone number</label>
+            </div>
+            <div class="form-control">
+                <InputText @bind-Value="ViewModel.SignInModel.Password" type="password" required />
+                <label>Password</label>
+            </div>
+            <button type="submit">Sign In</button>
+            <div class="form-help"> 
+                <div class="remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a href="#">Need help?</a>
+            </div>
+        </EditForm>
+        <p>New user? <a href="./registration.html">Sign up now</a></p>
+    </section>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.OnInitializedAsync();
+        await base.OnInitializedAsync();
+    }
+
+}

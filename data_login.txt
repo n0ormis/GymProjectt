@@ -1,0 +1,4 @@
+login -> admin@gmail.com
+password -> Admin123@
+
+u can register and create user by your data with email confirmation

@@ -1,0 +1,54 @@
+@page "/sign-up"
+@using ThePowerSPAv2.ViewModels.Identity
+
+@layout EmptyLayout
+
+@inject IdentityViewModel ViewModel
+
+<section class="sign_up">
+    <div class="form-wrapper">
+        <h2>Sign Up</h2>
+        <EditForm Model="ViewModel.SignUpModel" OnValidSubmit="ViewModel.SignUpAsync">
+              <DataAnnotationsValidator/>
+            <div class="form-control">
+                <InputText @bind-Value="ViewModel.SignUpModel.Fullname"/>
+                <label>Your first and last name</label>
+                <ValidationMessage For="() => ViewModel.SignUpModel.Fullname"/>
+            </div>
+            <div class="form-control">
+                <InputText @bind-Value="ViewModel.SignUpModel.Email"/>
+                <label>Email or phone number</label>
+                <ValidationMessage For="() => ViewModel.SignUpModel.Email"/>
+            </div>
+            <div class="form-control">
+                <InputText type="password" @bind-Value="ViewModel.SignUpModel.Password"/>
+                <label>Password</label>
+                <ValidationMessage For="() => ViewModel.SignUpModel.Password"/>
+            </div>
+            <div class="form-control">
+                <InputText type="password" @bind-Value="ViewModel.SignUpModel.ConfirmPassword"/>
+                <label>Please, repeat password</label>
+                <ValidationMessage For="() => ViewModel.SignUpModel.ConfirmPassword"/>
+            </div>
+            <button type="submit">Sign Up</button>
+            <div class="form-help">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a href="#">Need help?</a>
+            </div>
+        </EditForm>
+        <p>Already registered? <a href="./authorization.html">Sign in now</a></p>
+    </div>
+</section>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.OnInitializedAsync();
+        await base.OnInitializedAsync();
+    }
+
+}

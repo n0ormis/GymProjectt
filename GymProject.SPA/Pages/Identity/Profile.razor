@@ -1,0 +1,52 @@
+﻿@page "/Profile"
+@using GymProject.SPA.Features.Auth.Services
+@using GymProject.Contract.Dtos.Auth
+@using MudBlazor
+@inject IAuthenticationService AuthService
+@inject ISnackbar Snackbar
+@layout ProfileLayout
+
+<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+    <div class="profile_container" style="max-width: 860px">
+        <div class="title_profile">
+            <p style="font-size: 25px; font-weight: 500; color: antiquewhite;">Settings profile</p>
+        </div>
+        <div class="descriptions_profile">
+            <div class="" style="display: flex; flex-direction: column; margin-bottom: 10px;">
+                <label for="exampleFormControlInput1">Name</label>
+                <input type="text" id="exampleFormControlInput1" readonly value="@data.Name" style="background-color: white; padding: 10px; border-radius: 5px; color: black;">
+            </div>
+            <div class="" style="display: flex; flex-direction: column; margin-bottom: 10px;">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" id="exampleFormControlInput1" readonly value="@data.Email" style="background-color: white; padding: 10px; border-radius: 5px; color: black;">
+            </div>
+            <div class="" style="display: flex; flex-direction: column; margin-bottom: 10px;">
+                <label for="exampleFormControlInput1">Status membership</label>
+                <input type="text" id="exampleFormControlInput1" readonly value="@(data.Active ? "Active" : "No active")" style="background-color: white; padding: 10px; border-radius: 5px; color: black;">
+            </div>
+            <div class="" style="display: flex; flex-direction: column; margin-bottom: 10px;">
+                <label for="exampleFormControlInput1">Active to</label>
+                <input type="text" id="exampleFormControlInput1" readonly value="@(data.ActiveTo.HasValue ? data.ActiveTo.Value.ToString("MM/dd/yyyy") : "")" style="background-color: white; padding: 10px; border-radius: 5px; color: black;">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    public ProfileDto data { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try{
+            data = await AuthService.GetProfile();
+            await base.OnInitializedAsync();
+        }
+        catch(Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+        StateHasChanged();
+    }
+
+}

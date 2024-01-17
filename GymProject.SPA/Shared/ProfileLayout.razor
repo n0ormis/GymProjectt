@@ -1,0 +1,98 @@
+@using MudBlazor
+@using ThePowerSPAv2.Defenisions
+@using Microsoft.AspNetCore.Components.Authorization
+
+@inherits LayoutComponentBase
+<header class="min none1" style="margin-bottom: 120px"> 
+    <div class="header__top">
+        <div class="container">
+            <div class="header__top-row">
+
+                <a href="">
+                </a>
+
+                <div class="header__nav" style="padding-top: 30px;">
+                    <nav class="nav">
+                        <ul class="nav__list">
+                            <li>
+                                <a href="@PageUri.BLOG">Blog</a>
+                            </li>
+                            <li>
+                                <a href="@PageUri.ABOUT_US">About Us</a>
+                            </li>
+                            <AuthorizeView>
+                                <Authorized>
+                                    <li>
+                                        <a href=@PageUri.PROFILE>Profile</a>
+                                    </li>
+                                </Authorized>
+                                <NotAuthorized>
+                                    <li>
+                                        <a href="/sign-in">Sign in</a>
+                                    </li>
+                                    <li>
+                                        <a href="/sign-up">Sign up</a>
+                                    </li>
+                                </NotAuthorized>
+                            </AuthorizeView>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="header__nav-btn">
+                    <button class="nav-icon-btn">
+                        <div class="nav-icon"></div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+<MudThemeProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+@Body
+
+
+<footer class="footer none1">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__logo">
+                <a href="./home.html">
+                    <img src=".././img/logo.png" alt="LoftHouse">
+                </a>
+            </div>
+            <div class="footer__address">
+                <ul class="footer__nav-list">
+                    <li>Address: 6 Boulevard Dr, London</li>
+                    <li>Phone number: <a href="tel:+78121234567">44 123-45-67</a></li>
+                    <li>Schedule: 08:00 - 23:00</li>
+                    <li>E-mail: <a class="link-bold" href="mailto:vip@lofthouse.ru">vip@thepower.ru</a></li>
+                </ul>
+                <ul class="footer__socials">
+                    <li>
+                        <a href="#!">
+                            <img src="./img/socials/youtube.svg" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!">
+                            <img src="./img/socials/vk.svg" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!">
+                            <img src="./img/socials/facebook.svg" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!">
+                            <img src="./img/socials/instagram.svg" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
